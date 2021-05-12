@@ -1,9 +1,7 @@
 [WIP]
 # Preparing an ESP32 product for the IoT World
 
-You have an idea to solve a problem and you want to offer it to the world. You have worked days and nights alike to bring it to life. What's next?
-
-We have learned through multiple iterative development cycles, that one of the most important qualities for a product is scalability and as for a designer, envisioning the product a couple of months or years down the road depending on their predicted growth is of paramount important. If you are confident in your product, you will surely have to think about building it towards the impact you want it to create, and do so right from the start. Failure to do this could impact sales, quality and in many cases, failure of a product that was otherwise splendid!
+We have learned through multiple iterative development cycles, that one of the most important qualities for a product is scalability and as for a designer, envisioning the product a couple of months or years down the road depending on their predicted growth is of paramount importance. If you are confident in your product, you will surely have to think about building it towards the impact you want it to create, and do so right from the start. Failure to do this could impact sales, quality and in many cases, failure of a product that was otherwise splendid!
 
 One of the things that needs due consideration is flashing the devices with firmware during manufacturing. Now that you did everything right, and you're shipping thousands of units every day, to make this manufacturing process significantly more efficient, saving time and effort becomes a key ingredient to higher sales and hence contributing to even higher success of the product. That is why this particular time, I will talk about automating flashing/burning firmware into your products while saving time and effort with an example on the colossal ESP32.
 
