@@ -7,6 +7,14 @@ One of the things that needs due consideration is flashing the devices with firm
 
 Espressif has given us the [esptool](https://github.com/espressif/esptool) utility to take care of multiple such needs required in order to scale our manufacturing. It is a python-based, open-source utility that can be used to communicate with the ESP32 bootloader. For details, visit esptool [repo](https://github.com/espressif/esptool). 
 
+## Introducing [Bodh](https://bodh.iotready.co/)
+Bodh takes you from sign up to dashboards in less than 2 minutes. No more hassles, only bedazzles! Take a look at the getting started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
+
+> Bodh at https://bodh.iotready.co<br>
+ Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
+ Documentation at https://bodh.iotready.co/docs
+
+
 ## Need for a unique identifier while flashing firmware
 We know that when deploying a fleet of multiple devices, nomenclature of these devices are of the essence for various obvious reasons:
 - Identification
@@ -24,6 +32,7 @@ Let's look at an example scenario using AWS IoT Core since [AWS accounted for a 
 1. Register each device as a unique "thing" on AWS IoT Core server
 2. Create and attach a certificate to the thing you just created
 3. Download the device certificate, private key and public key. Use them in your device to successfully SSL verify your device to the AWS IoT server.
+4. Connect to AWS IoT from your device and start pushing data into the cloud!
 
 > For more details on this, please visit https://docs.aws.amazon.com/iot/latest/developerguide/iot-gs.html
 
