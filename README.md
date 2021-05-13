@@ -45,7 +45,7 @@ Bodh takes you from sign up to dashboards in less than 2 minutes. No more hassle
  Documentation at https://bodh.iotready.co/docs
 
 ### 2. Using Python SDK ([Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#)):
-The prepare script is a tool that does the following:
+The prepare script is a tool that automates the creating and flashing devices making them ready-to-deploy by just one command, saving time in abundance. It does the following:
 1. Use esptool to get the default MAC address of the device.
 2. Create a policy if it does not already exist. To learn about policies in AWS, visit [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html).
 3. Create keys(private and public) and certificate for the device and save them as files.
