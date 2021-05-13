@@ -7,14 +7,6 @@ One of the things that needs due consideration is flashing the devices with firm
 
 Espressif has given us the [esptool](https://github.com/espressif/esptool) utility to take care of multiple such needs required in order to scale our manufacturing. It is a python-based, open-source utility that can be used to communicate with the ESP32 bootloader. For details, visit esptool [repo](https://github.com/espressif/esptool). 
 
-## Introducing [Bodh](https://bodh.iotready.co/)
-Bodh takes you from sign up to dashboards in less than 2 minutes. No more hassles, only bedazzles! Take a look at the getting started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
-
-> Bodh at https://bodh.iotready.co<br>
- Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
- Documentation at https://bodh.iotready.co/docs
-
-
 ## Need for a unique identifier while flashing firmware
 We know that when deploying a fleet of multiple devices, nomenclature of these devices are of the essence for various obvious reasons:
 - Identification
@@ -41,7 +33,18 @@ This can be done in two ways:
 2. [AWS CLI Tool](https://docs.aws.amazon.com/cli/latest/reference/iot/)
 3. One of [several SDKs available](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sdks.html).
 
-## Using Python SDK ([Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#)):
+We want to bring to you two ways of getting data into the AWS cloud:
+
+### 1. Introducing [Bodh](https://bodh.iotready.co/)
+Bodh takes you from sign up to dashboards in less than 2 minutes. No more hassles, only bedazzles! Take a look at the get-started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
+
+<p style="text-align:center;"><img src="./asset/architecture.jpg" alt="architecture" class="center" width="500" height="400" /></p>
+
+> Bodh at https://bodh.iotready.co<br>
+ Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
+ Documentation at https://bodh.iotready.co/docs
+
+### 2. Using Python SDK ([Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#)):
 The prepare script is a tool that does the following:
 1. Use esptool to get the default MAC address of the device.
 2. Create a policy if it does not already exist. To learn about policies in AWS, visit [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html).
@@ -50,7 +53,7 @@ The prepare script is a tool that does the following:
 5. Create a new thing with the MAC address achieved in step1 as thing name.
 6. Copy/embed the downloaded certificate and keys files into the necessary folder.
 
-
+<p style="text-align:center;"><img src="./asset/prepare_flow.png" alt="prepare_flow" class="center" width="400" height="500" /></p>
 
 
 
