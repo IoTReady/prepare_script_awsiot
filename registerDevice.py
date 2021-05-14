@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 
-Helper function to create thing and add keys to spiffs image/SD card
+Helper function to create thing and add keys to project
 1. Create certificates
 2. Create thing
 3. Attach certificate to thing
@@ -15,6 +15,11 @@ import boto3
 import argparse
 from shutil import copyfile
 import sys
+
+# Change these as per your requirements
+thing_type_name = "IoTReady"
+owner_name = "hello@iotready.co"
+policy_name = "pubSubToAny"
 
 def get_deviceId(mac):
     return ''.join(map(lambda x: '%02x' % x, mac))
@@ -32,7 +37,7 @@ try:
     # To learn more about AWS IoT policies, visit https://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html
     try:
         response = client.create_policy(
-                                        policyName='pubSubToAny',
+                                        policyName=policy_name,
                                         policyDocument = '{"Version": "2012-10-17","Statement": [{"Effect": "Allow","Action": ["iot:*"],"Resource": ["*"]}]}'
                                         )
     except Exception as e:
@@ -53,7 +58,7 @@ try:
                                                     principal=principal
                                                     )
             response = client.detach_policy(
-                                        policyName='pubSubToAny',
+                                        policyName=policy_name,
                                         target=principal
                                         )
             response = client.update_certificate(
@@ -85,28 +90,23 @@ try:
 
     # Attach policy to certificate
     response = client.attach_principal_policy(
-                                              policyName='pubSubToAny',
+                                              policyName=policy_name,
                                               principal=certificateArn
                                               )
 
     # Create thing
     try:
-        response = client.create_thing(thingName=deviceId, thingTypeName="IoTReady", attributePayload={
-                               "attributes": {"owner": "hello@iotready.co"}})
+        response = client.create_thing(thingName=deviceId, thingTypeName=thing_type_name, attributePayload={
+                               "attributes": {"owner": owner_name}})
     except:
         response = client.delete_thing(thingName=deviceId)
-        response = client.create_thing(thingName=deviceId, thingTypeName="IoTReady", attributePayload={
-                                       "attributes": {"owner": "hello@iotready.co"}})
+        response = client.create_thing(thingName=deviceId, thingTypeName=thing_type_name, attributePayload={
+                                       "attributes": {"owner": owner_name}})
     # Attach certificate to thing
     response = client.attach_thing_principal(
         thingName=deviceId,
         principal=certificateArn
     )
-
-    # copy AWS certificates to SPIFFS image
-
-    copyfile("aws_credentials/{}.certificate.pem.crt".format(deviceId), "path/to/spiffs/image/certificate.pem.crt")
-    copyfile("aws_credentials/{}.private.pem.key".format(deviceId), "path/to/spiffs/image/private.pem.key")
 
     with open("mac_address.txt","w") as f:
         f.write(deviceId.upper())
