@@ -36,7 +36,7 @@ This can be done in two ways:
 
 We want to bring to you two ways of getting data into the AWS cloud:
 
-## The Prepare Script
+## The [Prepare Script](https://github.com/IoTReady/prepare_script_awsiot)
 The prepare script is a tool that automates the creating and flashing of devices making them ready-to-deploy with just one command, saving time in abundance. It does the following:
 
 1. Use esptool to get the default MAC address of the device.
