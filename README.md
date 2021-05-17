@@ -48,7 +48,7 @@ The prepare script is a tool that automates the creating and flashing of devices
 5. Create a new thing with the MAC address obtained in step1 as thing name.
 6. Copy/embed the downloaded certificate and keys files into the necessary folder.
 
-![prepare_flow](asset/prepare_script_flow.png)
+![prepare_flow](/asset/prepare_flow.png)
 
 ### How to use prepare.sh:
 - You will need AWS configured in your device in order to automatically access your AWS and do the various steps above. If you haven't already:
@@ -93,7 +93,7 @@ Meet your IoT Concierge! Most companies get too little from their IoT deployment
 
 Bodh takes you from signing up to insights in **LITERALLY** two minutes. Without compromising on security, robustness or scale. No more hassles, only bedazzles! Take a look at the get-started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
 
-![bodh_architecture](asset/bodh_architecture.jpg)
+![bodh_architecture](/asset/architecture.jpg)
 
 > Bodh at https://bodh.iotready.co<br>
  Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
