@@ -84,7 +84,7 @@ $ pip3 install -r requirements.txt
 $ sudo chmod +x prepare.sh
 ````
 
-Now that we have looked at the command line tool at a lower level, it is completely fair for most people to say that they would rather want to focus on other things and wish they had an even higher level of automated tool which takes care of all of the above. It is time that we present to you a product that makes all of the above even simpler * 3000. 
+Now that we have looked at the command line tool at a lower level, it is completely fair for most people to say that they would rather want to focus on other things and wish they had an even higher level of automated tool which takes care of all of the above. It is time that we present to you a product that makes all of the above even simpler. 
 
 ## Introducing [Bodh](https://bodh.iotready.co/)
 Meet your IoT Concierge! Most companies get too little from their IoT deployments, after spending too long & too much. Don't become one of them.
@@ -95,9 +95,4 @@ Bodh takes you from signing up to insights in **LITERALLY** two minutes. Without
 
 > Bodh at https://bodh.iotready.co<br>
  Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
- Documentation at https://bodh.iotready.co/docs
-
-
-
-
-
+ Documentation at https://bodh.iotready.co/docs<br>
