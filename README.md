@@ -1,4 +1,6 @@
-# Preparing an ESP32 product for the IoT World
+
+### Designing a 'smart' product should also include the vision of fast firmware uploading, configuring device with the cloud securely and automation to meet demands and keep important data pouring seamlessly into the cloud. Here's how you can do it.<br>
+<br>
 
 We have learned through multiple iterative development cycles, that one of the most important qualities for a product is scalability and as for a designer, envisioning the product a couple of months or years down the road depending on their predicted growth is of paramount importance. To be confident in your product, you will surely have to think about building it towards the impact you want it to create, and do so right from the start. Failure to do this could impact sales, quality and in many cases, failure of a product that was otherwise splendid!
 
@@ -46,7 +48,7 @@ The prepare script is a tool that automates the creating and flashing of devices
 5. Create a new thing with the MAC address obtained in step1 as thing name.
 6. Copy/embed the downloaded certificate and keys files into the necessary folder.
 
-<p style="text-align:center;"><img src="./asset/prepare_flow.png" alt="prepare_flow" class="center" width="400" height="500" /></p>
+![prepare_flow](asset/prepare_script_flow.png)
 
 ### How to use prepare.sh:
 - You will need AWS configured in your device in order to automatically access your AWS and do the various steps above. If you haven't already:
@@ -91,8 +93,14 @@ Meet your IoT Concierge! Most companies get too little from their IoT deployment
 
 Bodh takes you from signing up to insights in **LITERALLY** two minutes. Without compromising on security, robustness or scale. No more hassles, only bedazzles! Take a look at the get-started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
 
-<p style="text-align:center;"><img src="./asset/architecture.jpg" alt="architecture" class="center" width="500" height="400" /></p>
+![bodh_architecture](asset/bodh_architecture.jpg)
 
 > Bodh at https://bodh.iotready.co<br>
  Get the CLI tool at https://github.com/IoTReady/bodh_cli<br>
  Documentation at https://bodh.iotready.co/docs<br>
+
+Write to us at:
+> For any questions on bodh: bodh@iotready.co<br>
+ For any other general questions: hello@iotready.co
+
+**For Bodh and Prepare Script, we have SAP and Azure integrations coming soon!**
