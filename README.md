@@ -1,5 +1,3 @@
-[WIP]
-
 # Preparing an ESP32 product for the IoT World
 
 We have learned through multiple iterative development cycles, that one of the most important qualities for a product is scalability and as for a designer, envisioning the product a couple of months or years down the road depending on their predicted growth is of paramount importance. To be confident in your product, you will surely have to think about building it towards the impact you want it to create, and do so right from the start. Failure to do this could impact sales, quality and in many cases, failure of a product that was otherwise splendid!
@@ -14,7 +12,7 @@ We know that when deploying a fleet of multiple devices, naming of these devices
 - Grouping
 - Analysis, etc.
 
-More often than not, we might find ourselves in a need to use these identifiers before the devices are deployed to the "field". For ESP32s, we use the unique 12-digit default MAC address as `device_id`/`thing name` of the device for:
+More often than not, we might find ourselves in a need to use these identifiers before the devices are deployed to the "field". For ESP32s, we use the unique 12-digit default MAC address as `device_id`/`thing_name` of the device for:
 
 - Registering them on the cloud
 - Adding/embedding certificates and keys for security
@@ -38,9 +36,8 @@ This can be done in two ways:
 
 We want to bring to you two ways of getting data into the AWS cloud:
 
-### 1. Using AWS Python SDK ([Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#)):
-
-The prepare script is a tool that automates the creating and flashing of devices making them ready-to-deploy with just one command, saving time in abundance. It has a key advantage over the regular ESP32-IDF SDK in that it stores keys not as part of the application image but in SPIFFS. This allows for the possibility of easily pre-flashing ESP-32 devices with your application code and then using a simple command line to configure your device at registration / deployment. It does the following:
+## The Prepare Script
+The prepare script is a tool that automates the creating and flashing of devices making them ready-to-deploy with just one command, saving time in abundance. It does the following:
 
 1. Use esptool to get the default MAC address of the device.
 2. Creates an AWS policy if it does not already exist. To learn about policies in AWS, visit [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html).
@@ -51,9 +48,48 @@ The prepare script is a tool that automates the creating and flashing of devices
 
 <p style="text-align:center;"><img src="./asset/prepare_flow.png" alt="prepare_flow" class="center" width="400" height="500" /></p>
 
-### 2. Introducing [Bodh](https://bodh.iotready.co/)
+### How to use prepare.sh:
+- You will need AWS configured in your device in order to automatically access your AWS and do the various steps above. If you haven't already:
+    - Install the python AWS CLI on your machine
+    ````
+    $ pip3 install awscli
+    ````
+    - Once done, run the command below to configure your AWS security credentials by providing the respective values:
+    ````
+    $ aws configure
 
-While the prepare script makes it easy to setup and register your devices with AWS IoT, that is only part of the story. The next thing, once you are deploying your devices is to be able to actually see, manage and collect data from your devices. We found ourselves doing this so often, we decided to optimize the process. The result is Bodh. Bodh takes you from sign up to dashboards in less than 2 minutes. No more hassles, only bedazzles! Take a look at the get-started video at https://bodh.iotready.co to spend two minutes of your time to see how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
+    AWS Access Key ID [None]:
+    AWS Secret Access Key [None]:
+    Default region name [None]:
+    Default output format [None]:
+    ````
+    > For more details on AWS access keys :https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys<br>
+    For more details on AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+
+- You will need esptool and boto3 installed. Just run:
+````
+$ pip3 install -r requirements.txt
+````
+- Make sure you have configured the AWS variables in [registerDevice.py](./registerDevice.py#L19)
+- Put your code project into a directory named `source`. This can be changed in the script.
+- Connect your ESP32 
+> This script is designed to be used for production firmware. Therefore, at every run, it stashes and pulls from the remote git repo. Please move ahead accordingly.
+- The AWS certificates will be stored in a folder named `aws_credentials` directory according to the current setup. You can change this in the registerDevice.py file. Make sure the directory exists before you run the script.
+- Run prepare.sh in your project folder.
+
+**Note:**
+- If the project is not a git repository, comment lines 9 and 10 in prepare.sh
+- Make sure the prepare.sh file has executable permission:
+````
+$ sudo chmod +x prepare.sh
+````
+
+Now that we have looked at the command line tool at a lower level, it is completely fair for most people to say that they would rather want to focus on other things and wish they had an even higher level of automated tool which takes care of all of the above. It is time that we present to you a product that makes all of the above even simpler * 3000. 
+
+## Introducing [Bodh](https://bodh.iotready.co/)
+Meet your IoT Concierge! Most companies get too little from their IoT deployments, after spending too long & too much. Don't become one of them.
+
+Bodh takes you from signing up to insights in **LITERALLY** two minutes. Without compromising on security, robustness or scale. No more hassles, only bedazzles! Take a look at the get-started video on https://bodh.iotready.co to spend two precious minutes of your time on how to get started with a cloud connected device and then take another two minutes to actually get your device sending data into the dashboard!
 
 <p style="text-align:center;"><img src="./asset/architecture.jpg" alt="architecture" class="center" width="500" height="400" /></p>
 
